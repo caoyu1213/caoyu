@@ -7,12 +7,12 @@ requirejs.config({
     }
 });
 define(["jquery"],function($){
-    //µ¯³ö²ãÀà
+    //å¼¹å‡ºå±‚ç±»
     function Dialog(settings){
         this.defaulstSettings={
             width:500,
             height:400,
-            title:"µ¯³ö²ã",
+            title:"å¼¹å‡ºå±‚",
             content:""
         };
         $.extend(this.defaulstSettings,settings);

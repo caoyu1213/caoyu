@@ -12,7 +12,7 @@ define(["jquery"],function($){
             var defaulstSettings = {
                 width:500,
                 height:400,
-                title:"µ¯³ö²ã",
+                title:"å¼¹å‡ºå±‚",
                 content:""
             };
             $.extend(defaulstSettings,settings);
