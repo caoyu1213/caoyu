@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+   <ul>
+       <li v-for="val in arr"> {{val}}</li>
+   </ul>
+    <p v-for="n in 3">{{n}}</p>
+</div>
+</body>
+<script src="vue.js"></script>
+<script>
+
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            arr:[1,2,3,4,5],
+            obj:{
+                a:1,
+                b:2,
+                c:3      //循环对象
+            }
+
+        },
+        methods:{
+
+            }
+
+    });
+
+
+</script>
+</html>

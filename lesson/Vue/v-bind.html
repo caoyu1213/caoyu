@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .red{
+        width: 200px;
+        height: 200px;
+        background: red;
+        margin-bottom: 20px;
+    }
+    .font{
+        font-size: 40px;
+    }
+</style>
+<body>
+<div id="app">
+    <p :id="aa">pppppppppp</p>
+    <!-- class  style-->
+    <div :class="{red:isRed,font:isFont}">dd</div><!--对象形式-->
+    <div :class="classObj">aaaa</div>
+    <div :class="[classA,classB]">BBBB</div> !--数组形式-->
+</div>
+
+</body>
+<script src="vue.js"></script>
+<script>
+   var vm = new Vue({
+        el:'#app',
+        data:{
+            aa:'id1',
+            isRed:true,
+            isFont:true,
+            classObj:{
+                red:true,
+                font:true
+            },
+            classA:'red',
+            classB:'font'
+
+        },
+        methods:{
+            fn:function(){
+                console.log(event.target.value);
+            }
+        }
+    });
+</script>
+</html>

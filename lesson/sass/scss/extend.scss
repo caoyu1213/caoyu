@@ -1,0 +1,11 @@
+body{
+  color: #ff6600;
+  ul{
+    background-color: #FFF;
+
+  }
+}
+div{
+  @extend  body;
+  font-size: 23px;
+}

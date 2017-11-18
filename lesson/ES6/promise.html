@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script src="jquery-1.11.2.js"></script>
+<script>
+    setTimeout(function(){
+        console.log(55555);
+    },1000);
+    console.log(55555);
+    var p=new Promise(function(resolve,reject){
+        console.log(1111);
+        resolve(2222);
+    });
+    p.then(function(date){
+        console.log(data);
+    });
+    console.log(7777);
+
+
+
+</script>
+</body>
+</html>

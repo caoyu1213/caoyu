@@ -1,0 +1,223 @@
+#header{
+    height: 100px;
+    display: flex;
+}
+#menu{
+    width: 82px;
+    height: 46px;
+    margin-left: 40px;
+    cursor: pointer;
+    margin-top: 27px;
+}
+#logo{
+    flex-grow: 1;
+    text-align: center;
+}
+#logo img{
+    width: 73px;
+    height: 73px;
+    margin-top: 8px;
+}
+#club{
+    width: 90px;
+    height: 42px;
+    margin-right: 40px;
+    font-size: 14px;
+    margin-top: 30px;
+    transition: all 1s ease;
+}
+#club span a{
+    color: #b89f7a;
+    font-weight: bold;
+}
+#nav{
+    height: 760px;
+    width: 100%;
+    position: relative;
+}
+#nav  img{
+    width: 100%;
+}
+#nav img:nth-child(2){
+    display: none;
+}
+#nav .more{
+    display: block;
+    width: 100px;
+    height: 22px;
+    color: #ffffff;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+
+}
+#login-f{
+    height: 220px;
+    width: 100%;
+    background: url("../img/rewards_bg.png");
+}
+#login-s{
+    height: 220px;
+    width: 100%;
+    background: url("../img/rewards_bg.png");
+}
+#login-s{
+    display: none;
+}
+.wrapper{
+    width: 780px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+ .wrapper .left{
+    width: 350px;
+    color: #ffffff;
+    float: left;
+}
+.wrapper .right{
+    width: 430px;
+    color: #ffffff;
+    float: right;
+}
+.wrapper button{
+    width: 114px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #a98e67;
+    color: #a98e67;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.wrapper button:hover{
+    background: #967a50;
+    color: #ffffff;
+}
+.wrapper span{
+    color: #967a50;
+    padding-left: 50px;
+    font-size: 12px;
+}
+
+#center{
+    height: 100px;
+
+}
+#try{
+    height: 220px;
+    background: url("../img/app_bg.gif") repeat;
+    position: relative;
+    display: flex;
+}
+#try .phone{
+    width: 350px;
+    height: 200px;
+    background: url("../img/app_device.png") center bottom no-repeat;
+    background-size: contain;
+    margin-left: 200px;
+
+}
+#try .er {
+    width: 130px;
+    height: 130px;
+    background: url("../img/app_qr_20170209.png") center/contain no-repeat;
+    position: absolute;
+    left: 650px;
+}
+
+#try .font {
+    position: absolute;
+    width: 450px;
+    height: 56px;
+    right: 250px;
+    margin-top: 50px;
+    color: #666666;
+
+}
+#try .font span{
+    display: block;
+    width: 100px;
+    height: 22px;
+    font-size: 13px;
+    color: #967a67;
+    line-height: 20px;
+
+}
+#conduct{
+    height: 440px
+}
+#cess{
+    height: 1000px;
+    position: relative;
+}
+#cess div{
+    display: flex;
+}
+#cess img:nth-child(1){
+    width: 50%;
+    display: block;
+}
+#cess img:nth-child(2){
+    width: 50%;
+    display: block;
+}
+#ce {
+    position:relative;
+    bottom: 60px;
+}
+#ce h2{
+    color: #ffffff;
+}
+#ce h5{
+    color: #a98e67;
+}
+#ce .left{
+    position: absolute;
+    display: block;
+    left: 200px;
+    text-align: center;
+    line-height: 25px;
+}
+#ce .right{
+    position: absolute;
+    display: block;
+    right: 200px;
+    text-align: center;
+    line-height: 25px;
+}
+#selected{
+    height: 400px;
+}
+#know-more{
+    height: 500px;
+}
+#news{
+    height: 1000px;
+}
+#footer{
+    height: 200px;
+}
+
+
+@media (max-width: 991px) {
+    #nav img:nth-child(1){
+        display: none;
+    }
+    #nav img:nth-child(2){
+        display: block;
+    }
+    #login-f{
+        display: none;
+        height: 0;
+    }
+    #login-s{
+        display: block;
+    }
+}
+@media (max-width: 767px) {
+    #club{
+        font-size: 12px;
+    }
+}

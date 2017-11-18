@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>v-if</title>
+</head>
+<body>
+    <div id="app">
+        <h1 v-if="flag">hhhhhhhhhh</h1>
+        <span v-else-if="flag==2">sssssssss</span>
+        <p v-else></p>
+        <h2 v-show="flag">h2h2h2h2h2</h2>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    var em=new Vue({
+        ei:'#app',
+        data:{
+            flag:true
+        }
+
+    });
+</script>
+</html>
