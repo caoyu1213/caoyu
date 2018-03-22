@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>贪吃蛇面向过程版</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 1000px;
+            border: 1px solid #000000;
+            margin: 50px auto;
+        }
+        #ground{
+            width: 1000px;
+            height: 500px;
+            background: #cccccc;
+            position: relative;
+        }
+        #ground .block{
+            width: 20px;
+            height: 20px;
+            float: left;
+            background: orange;
+
+        }
+        #ground .section{
+            background: red;
+            position: absolute;
+        }
+        #ground .food{
+            background: green;
+            position: absolute;
+        }
+        #control{
+            height: 50px;
+            line-height: 50px;
+        }
+        #banner{
+            float: left;
+        }
+        #buttons{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="ground"></div>
+        <div id="control">
+            <span id="banner">javascript 贪吃蛇 by  cao宇er</span>
+            <div id="buttons">
+                <button id="btn-play">开始</button>
+                <button id="btn-pause">暂停</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        //1.初始化草场
+        var oGround = document.getElementById('ground');
+         for( var i=0;i<50*25;i++){
+             var oDiv = document.createElement('div');
+             oDiv.className = 'block';
+             oGround.appendChild(oDiv);
+         }
+        //2.初始化小蛇
+        var snakeBody =[];
+        for(var i=0;i<3;i++){
+            var oDiv = document.createElement('div');
+            oDiv.className = 'block section';
+            oDiv.style.left = (3-i)*20+'px';
+            oDiv.style.top = '60px';
+            oGround.appendChild(oDiv);
+            snakeBody.push(oDiv);//将蛇的每一小节放到蛇身的数组中
+        }
+        //3.初始化食物
+        var oFood;
+        function createFood(){
+            do{
+                var bFlag =true;//一个标识位  true代表找到合适的坐标
+                var iLeft = Math.floor(Math.random() * 50) * 20; //随机产生食物的横坐标
+                var iTop = Math.floor(Math.random() * 25) * 20; //随机产生食物的纵坐标
+                for(var i=0;i<snakeBody.length;i++){
+                    if(snakeBody[i].offsetLeft==iLeft && snakeBody[i].offsetTop==iTop){
+                        bFlag =false;//如果食物坐标与蛇身重合，将bFlag改为false代表没找到
+                        break;
+                    }
+                }
+            }while(!bFlag);
+            oFood = document.createElement('div');
+            oFood.className ='block food';
+            oFood.style.left = iLeft+'px';
+            oFood.style.top = iTop+'px';
+            oGround.appendChild(oFood);
+        }
+          createFood();
+        //4.蛇移动
+        var direction = 'right';
+        function move(){
+            var snakeHead = snakeBody[0];//取出蛇头
+            var nextPos = {//蛇头的下一个目标位置
+                left: snakeHead.offsetLeft,
+                top: snakeHead.offsetTop
+            };
+            if(direction == 'left'){
+                nextPos.left -= 20;
+            }else if(direction == 'up'){
+                nextPos.top -= 20;
+            }else if(direction == 'right'){
+                nextPos.left += 20;
+            }else if(direction == 'down'){
+                nextPos.top += 20;
+            }
+            //蛇吃食物
+            if(nextPos.left == oFood.offsetLeft && nextPos.top == oFood.offsetTop){
+//                oFood.className ='block section';
+//                snakeBody.splice(snakeBody.length-2,0,oFood);
+//                snakeTail.style.left = snakeTail.offsetLeft
+                var snakeTail=snakeBody[snakeBody.length-1];
+                var snakeTailPos ={
+                    left:snakeBody[snakeBody.length-1].offsetLeft,
+                    top:snakeBody[snakeBody.length-1].offsetTop
+                };
+            }
+
+            for( var i=0;i<snakeBody.length;i++){
+                var nowPos ={
+                    left: snakeBody[i].offsetLeft,
+                    top: snakeBody[i].offsetTop
+                };
+                snakeBody[i].style.left = nextPos.left+'px';
+                snakeBody[i].style.top = nextPos.top+'px';
+                nextPos = nowPos;
+            }
+            if(snakeHead.offsetLeft ==oFood.offsetLeft && snakeHead.offsetTop == oFood.
+                            offsetTop ){//蛇真正吃到食物
+                var snakeTailNowPos ={
+                    left:snakeTail.offsetLeft,
+                    top:snakeTail.offsetTop
+                };
+                oFood.className ='block section';
+                snakeBody.splice(snakeBody.length-1,0,oFood);
+                //snakeBody[snakeBody.length-1].style.left = snakeTail.offsetLeft + 'px';
+                snakeTail.style.left = snakeTailPos.left + 'px';
+                snakeTail.style.top = snakeTailPos.top + 'px';
+                oFood.style.left = snakeTailNowPos.left + 'px';
+                oFood.style.top = snakeTailNowPos.top + 'px';
+                createFood();  //生成新的食物
+
+            }
+
+        }
+        var timer;
+        var oBtnPlay = document.getElementById('btn-play');
+        oBtnPlay.onclick = function(){
+            if(timer){
+                clearInterval(timer);
+            }
+            timer = setInterval(function(){
+                move();
+            },300);
+        };
+        //键盘事件处理
+        document.onkeydown = function(e){
+            e = e||window.event;
+            var keyCode = e.which || e.keyCode;
+            switch(keyCode){
+                case 37:  //left
+                        if(direction != 'right'){
+                            direction = 'left';
+                        }
+
+                    break;
+                case 38:  //up
+                    direction = 'up';
+                    break;
+                case 39: //right
+                    direction = 'right';
+                    break;
+                case 40://down
+                    direction = 'down';
+                    break;
+            }
+        };
+
+        //6.检测是否吃到墙或者自己的身体
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
